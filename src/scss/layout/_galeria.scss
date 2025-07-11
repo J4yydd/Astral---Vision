@@ -91,7 +91,8 @@
 
 .btn-cerrar,
 .btn-descargar,
-.btn-compartir {
+.btn-compartir,
+.btn-guardar {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -132,6 +133,15 @@
     
     &:hover {
         background-color: darken(v.$amarillo, 10%);
+    }
+}
+
+.btn-guardar {
+    background-color: v.$morado;
+    color: v.$blanco;
+    
+    &:hover {
+        background-color: darken(v.$morado, 10%);
     }
 }
 
@@ -181,7 +191,8 @@
     
     .btn-cerrar,
     .btn-descargar,
-    .btn-compartir {
+    .btn-compartir,
+    .btn-guardar {
         width: 3.5rem;
         height: 3.5rem;
         font-size: 1.4rem;

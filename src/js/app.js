@@ -81,6 +81,17 @@ function mostrarImagen(i) {
         compartirImagen(i)
     }
 
+    // Botón para guardar en galería (especialmente para iOS)
+    const guardarBtn = document.createElement('BUTTON')
+    guardarBtn.innerHTML = '<i class="fas fa-save"></i>'
+    guardarBtn.classList.add('btn-guardar')
+    guardarBtn.title = 'Guardar en galería'
+    guardarBtn.onclick = function(e) {
+        e.stopPropagation()
+        guardarEnGaleria(i)
+    }
+
+    botonesContainer.appendChild(guardarBtn)
     botonesContainer.appendChild(compartirBtn)
     botonesContainer.appendChild(descargarBtn)
     botonesContainer.appendChild(cerrarModalBtn)
@@ -124,19 +135,76 @@ function descargarImagenDesktop(i) {
 }
 
 function descargarImagenMobile(i) {
-    // Para móviles, abrir en nueva pestaña para que el usuario pueda guardar
     const url = `src/img/gallery/full/${i}.jpg`
-    const nuevaVentana = window.open(url, '_blank')
     
-    if (nuevaVentana) {
-        mostrarNotificacion('Imagen abierta en nueva pestaña. Mantén presionada para guardar.')
+    // Intentar usar la API de descarga nativa si está disponible
+    if ('download' in document.createElement('a')) {
+        // Crear un enlace temporal y hacer clic
+        const link = document.createElement('a')
+        link.href = url
+        link.download = `astral-vision-galeria-${i}.jpg`
+        link.target = '_blank'
+        
+        // Para iOS, necesitamos una estrategia diferente
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            // En iOS, abrir en nueva pestaña y mostrar instrucciones
+            const nuevaVentana = window.open(url, '_blank')
+            if (nuevaVentana) {
+                mostrarNotificacion('Imagen abierta. Mantén presionada para guardar en galería')
+            } else {
+                mostrarNotificacion('Bloqueador de ventanas detectado. Usa el botón compartir.')
+            }
+        } else {
+            // Para Android y otros móviles
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+            mostrarNotificacion('Descarga iniciada. Revisa tu galería.')
+        }
     } else {
-        // Fallback: copiar URL al portapapeles
-        navigator.clipboard.writeText(window.location.origin + '/' + url).then(() => {
-            mostrarNotificacion('URL copiada al portapapeles')
-        }).catch(() => {
-            mostrarNotificacion('No se pudo descargar en este dispositivo')
-        })
+        // Fallback: usar fetch para descargar la imagen
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                const blobUrl = window.URL.createObjectURL(blob)
+                const link = document.createElement('a')
+                link.href = blobUrl
+                link.download = `astral-vision-galeria-${i}.jpg`
+                document.body.appendChild(link)
+                link.click()
+                document.body.removeChild(link)
+                window.URL.revokeObjectURL(blobUrl)
+                mostrarNotificacion('Descarga completada. Revisa tu galería.')
+            })
+            .catch(() => {
+                // Último fallback: abrir en nueva pestaña
+                const nuevaVentana = window.open(url, '_blank')
+                if (nuevaVentana) {
+                    mostrarNotificacion('Imagen abierta. Mantén presionada para guardar.')
+                } else {
+                    mostrarNotificacion('Usa el botón compartir para guardar la imagen.')
+                }
+            })
+    }
+}
+
+function guardarEnGaleria(i) {
+    const url = `src/img/gallery/full/${i}.jpg`
+    
+    // Detectar si es iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+    
+    if (isIOS) {
+        // Para iOS, usar una estrategia específica
+        const nuevaVentana = window.open(url, '_blank')
+        if (nuevaVentana) {
+            mostrarNotificacion('Imagen abierta. Mantén presionada y selecciona "Guardar imagen"')
+        } else {
+            mostrarNotificacion('Bloqueador detectado. Usa el botón compartir.')
+        }
+    } else {
+        // Para Android y otros, usar el método de descarga normal
+        descargarImagenMobile(i)
     }
 }
 
@@ -144,7 +212,11 @@ function compartirImagen(i) {
     const url = `src/img/gallery/full/${i}.jpg`
     const texto = '¡Mira esta foto del festival Astral Vision!'
     
-    if (navigator.share) {
+    // Detectar si es móvil
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    
+    if (navigator.share && isMobile) {
+        // Usar Web Share API en móviles
         navigator.share({
             title: 'Astral Vision Festival',
             text: texto,
@@ -152,10 +224,14 @@ function compartirImagen(i) {
         }).then(() => {
             mostrarNotificacion('Contenido compartido')
         }).catch(() => {
-            mostrarNotificacion('Error al compartir')
+            // Si falla el share, intentar descargar
+            descargarImagenMobile(i)
         })
+    } else if (isMobile) {
+        // Para móviles sin Web Share API, intentar descargar directamente
+        descargarImagenMobile(i)
     } else {
-        // Fallback para navegadores que no soportan Web Share API
+        // Para desktop, copiar URL al portapapeles
         const urlCompleta = window.location.origin + '/' + url
         navigator.clipboard.writeText(urlCompleta).then(() => {
             mostrarNotificacion('URL copiada al portapapeles')
