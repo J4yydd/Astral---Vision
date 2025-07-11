@@ -47,20 +47,45 @@ function mostrarImagen(i) {
     modal.classList.add('modal')
     modal.onclick = cerrarModal
 
+    // Contenedor para botones
+    const botonesContainer = document.createElement('DIV')
+    botonesContainer.classList.add('modal-botones')
+
     // Botón cerrar modal
     const cerrarModalBtn = document.createElement('BUTTON')
     cerrarModalBtn.textContent = 'X'
     cerrarModalBtn.classList.add('btn-cerrar')
     cerrarModalBtn.onclick = cerrarModal
 
+    // Botón descargar imagen
+    const descargarBtn = document.createElement('BUTTON')
+    descargarBtn.textContent = '📥'
+    descargarBtn.classList.add('btn-descargar')
+    descargarBtn.title = 'Descargar imagen'
+    descargarBtn.onclick = function(e) {
+        e.stopPropagation()
+        descargarImagen(i)
+    }
+
+    botonesContainer.appendChild(descargarBtn)
+    botonesContainer.appendChild(cerrarModalBtn)
+
     modal.appendChild(imagen)
-    modal.appendChild(cerrarModalBtn)
+    modal.appendChild(botonesContainer)
 
     // Agregar al HTML
     const body = document.querySelector('body')
     body.classList.add('overflow-hidden')
     body.appendChild(modal)
+}
 
+function descargarImagen(i) {
+    const link = document.createElement('a')
+    link.href = `src/img/gallery/full/${i}.jpg`
+    link.download = `imagen-galeria-${i}.jpg`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
 }
 
 function cerrarModal() {

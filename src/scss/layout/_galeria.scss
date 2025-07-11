@@ -38,6 +38,15 @@
     }
 }
 
+.modal-botones {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
 .btn-cerrar {
     width: 4rem;
     height: 4rem;
@@ -49,6 +58,34 @@
     place-items: center;
     font-weight: 700;
     cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: v.$negro;
+        color: v.$blanco;
+        transform: scale(1.1);
+    }
+}
+
+.btn-descargar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: v.$blanco;
+    border: none;
+    color: v.$negro;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: v.$negro;
+        color: v.$blanco;
+        transform: scale(1.1);
+    }
 }
 
 @keyframes fadeIn {
