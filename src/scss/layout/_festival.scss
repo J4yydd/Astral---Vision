@@ -1,21 +1,130 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-
 .sobre-festival {
     @include m.contenedor;
+    padding: 5rem 0;
+    
     @include m.tablet {
-        @include m.grid(2);
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 5rem;
+        align-items: center;
+    }
+    
+    .imagen {
+        margin-bottom: 3rem;
+        
+        @include m.tablet {
+            margin-bottom: 0;
+        }
+        
+        img {
+            border-radius: 1rem;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.3);
+            }
+        }
+    }
+    
+    .contenido-festival {
+        h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: v.$negro;
+            
+            i {
+                color: v.$amarillo;
+                margin-right: 1rem;
+                animation: fireGlow 2s ease-in-out infinite;
+            }
+            
+            @include m.telefono {
+                font-size: 3rem;
+            }
+        }
+        
+        .fecha {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: v.$verde;
+            margin-bottom: 2rem;
+            
+            i {
+                color: v.$rosa;
+                margin-right: 1rem;
+            }
+            
+            @include m.telefono {
+                font-size: 2rem;
+            }
+        }
+        
+        p {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            color: v.$gris;
+            margin-bottom: 3rem;
+            
+            @include m.telefono {
+                font-size: 1.6rem;
+            }
+        }
     }
 }
 
-.contenido-festival {
-    margin-top: 5rem;
-    h2 {
-        margin-bottom: 2rem;
+// Features section
+.features {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
+    
+    @include m.tablet {
+        grid-template-columns: repeat(3, 1fr);
     }
-    .fecha {
-        color: v.$verde;
-        font-weight: 700;
+    
+    .feature {
+        background: linear-gradient(135deg, rgba(v.$verde, 0.1), rgba(v.$amarillo, 0.1));
+        padding: 2rem;
+        border-radius: 1rem;
+        text-align: center;
+        border: 0.1rem solid rgba(v.$verde, 0.2);
+        transition: all 0.3s ease;
+        
+        &:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+            border-color: v.$verde;
+        }
+        
+        i {
+            font-size: 3rem;
+            color: v.$verde;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        span {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: v.$negro;
+            display: block;
+        }
+    }
+}
+
+@keyframes fireGlow {
+    0%, 100% {
+        color: v.$amarillo;
+        transform: scale(1);
+    }
+    50% {
+        color: v.$rosa;
+        transform: scale(1.1);
     }
 }

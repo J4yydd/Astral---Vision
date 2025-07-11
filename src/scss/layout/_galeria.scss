@@ -3,6 +3,24 @@
 
 .galeria {
     @include m.contenedor;
+    
+    h3 {
+        text-align: center;
+        margin-bottom: 1rem;
+        
+        i {
+            margin-right: 1rem;
+            color: v.$amarillo;
+        }
+    }
+    
+    .galeria-descripcion {
+        text-align: center;
+        color: v.$gris;
+        margin-bottom: 3rem;
+        font-size: 1.8rem;
+    }
+    
     &-imagenes {
         @include m.grid(1, 2rem);
         @include m.telefono {
@@ -14,9 +32,18 @@
         @include m.desktop {
             @include m.grid(4, 2rem);
         }
+        
         img {
             height: 20rem;
             object-fit: cover;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+            }
         }
     }
 }
@@ -24,17 +51,27 @@
 .modal {
     position: fixed;
     inset: 0;
-    background-color: rgba(v.$negro, 0.5);
+    background-color: rgba(v.$negro, 0.8);
     display: grid;
     place-items: center;
-    animation: fadeIn ease-in 0.5s;
+    animation: fadeIn ease-in 0.3s;
+    z-index: 1000;
+    padding: 2rem;
 
     &.fade-out {
-        animation: fadeOut ease-in 0.5s;
+        animation: fadeOut ease-in 0.3s;
+    }
+
+    &.modal-active {
+        animation: modalActive 0.3s ease-out;
     }
 
     img {
-        max-width: 100rem;
+        max-width: 90vw;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 1rem;
+        box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.5);
     }
 }
 
@@ -45,9 +82,16 @@
     display: flex;
     gap: 1rem;
     z-index: 10;
+    flex-direction: column;
+    
+    @include m.tablet {
+        flex-direction: row;
+    }
 }
 
-.btn-cerrar {
+.btn-cerrar,
+.btn-descargar,
+.btn-compartir {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -59,32 +103,96 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 1.6rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
 
     &:hover {
         background-color: v.$negro;
         color: v.$blanco;
         transform: scale(1.1);
     }
+    
+    &:active {
+        transform: scale(0.95);
+    }
 }
 
 .btn-descargar {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    background-color: v.$blanco;
-    border: none;
-    color: v.$negro;
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-
+    background-color: v.$verde;
+    color: v.$blanco;
+    
     &:hover {
-        background-color: v.$negro;
-        color: v.$blanco;
-        transform: scale(1.1);
+        background-color: darken(v.$verde, 10%);
+    }
+}
+
+.btn-compartir {
+    background-color: v.$amarillo;
+    color: v.$negro;
+    
+    &:hover {
+        background-color: darken(v.$amarillo, 10%);
+    }
+}
+
+// Notificaciones
+.notificacion {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background-color: v.$verde;
+    color: v.$blanco;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    max-width: 30rem;
+    font-weight: 600;
+    
+    &.notificacion-activa {
+        transform: translateX(0);
+    }
+    
+    @include m.telefono {
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+    }
+}
+
+// Optimizaciones para móviles
+.mobile-device {
+    .modal {
+        padding: 1rem;
+        
+        img {
+            max-width: 95vw;
+            max-height: 70vh;
+        }
+    }
+    
+    .modal-botones {
+        top: 1rem;
+        right: 1rem;
+        gap: 0.5rem;
+    }
+    
+    .btn-cerrar,
+    .btn-descargar,
+    .btn-compartir {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.4rem;
+    }
+    
+    .galeria-imagenes img {
+        height: 15rem;
+        
+        &:hover {
+            transform: none;
+        }
     }
 }
 
@@ -103,5 +211,16 @@
     }
     100%  {
         opacity: 0;
+    }
+}
+
+@keyframes modalActive {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }

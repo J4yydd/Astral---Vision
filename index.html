@@ -1,23 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Astral Vision & Kyra Food - El mejor festival de música electrónica en Jerez Zacatecas">
+    <meta name="keywords" content="festival, música, electrónica, techno, EDM, Jerez, Zacatecas">
+    <meta name="author" content="Astral Vision">
+    <meta property="og:title" content="Astral Vision & Kyra Food">
+    <meta property="og:description" content="El mejor festival de música electrónica en Jerez Zacatecas">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="src/img/imagen_dj.jpg">
+    
     <title>Astral Vision & Kyra Food</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="src/img/favicon.ico">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="build/css/app.css">
 </head>
 <body>
     <header class="header">
         <div class="contenedor contenido-header">
-            <h1>Astral Vision presenta.</h1>
+           
 
             <nav class="navegacion-principal">
-                <a href="#lineup">Line Up</a>
-                <a href="#galeria">Galería</a>
-                <a href="#boletos">Boletos</a>
+                <a href="#lineup"><i class="fas fa-music"></i> Line Up</a>
+                <a href="#galeria"><i class="fas fa-images"></i> Galería</a>
+                <a href="#boletos"><i class="fas fa-ticket-alt"></i> Boletos</a>
             </nav>
         </div>
     </header>
@@ -25,13 +44,30 @@
     <div class="video">
         <div class="overlay">
             <div class="contenedor contenido-video">
-                <h2>Astral Vision & Kyra Food</h2>
-                <p>Julio 11 - Jerez Zacatecas</p>
+                <h2><i class="fas fa-moon"></i> Astral Vision & Kyra Food</h2>
+                <p><i class="fas fa-calendar-alt"></i> Julio 11 - Jerez Zacatecas</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span id="days">00</span>
+                        <span>Días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">00</span>
+                        <span>Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">00</span>
+                        <span>Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">00</span>
+                        <span>Segundos</span>
+                    </div>
+                </div>
             </div>
         </div>
         <video autoplay muted loop playsinline preload="auto">
             <source src="video/pre.mp4" type="video/mp4" />
-        
         </video>
     </div>
 
@@ -41,38 +77,52 @@
         </div>
 
         <div class="contenido-festival">
-            <h2>Techno </h2>
-            <p class="fecha">Julio 11 - Jerez Zacatecas</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam aut assumenda ullam facilis sapiente dolore ipsam optio cumque laboriosam animi. Doloribus esse libero, quos facilis voluptatem omnis eligendi magni provident?</p>
+            <h2><i class="fas fa-fire"></i> Techno & EDM</h2>
+            <p class="fecha"><i class="fas fa-map-marker-alt"></i> Julio 11 - Jerez Zacatecas</p>
+            <p>Prepárate para la experiencia musical más intensa del año. Astral Vision & Kyra Food te traen el mejor festival de música electrónica con los mejores DJs nacionales e internacionales. Una noche llena de energía, luces y ritmos que te harán vibrar hasta el amanecer.</p>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-headphones"></i>
+                    <span>Música de Calidad</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Show de Luces</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-cocktail"></i>
+                    <span>Bebidas Premium</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="lineup" class="lineup">
-        <h3>Line Up</h3>
+        <h3><i class="fas fa-microphone"></i> Line Up</h3>
 
         <p class="dia">Viernes 11</p>
         <div class="escenarios-contenedor">
             <div class="escenario bg-amarillo">
-                <p class="nombre-escenario">Techno</p>
+                <p class="nombre-escenario"><i class="fas fa-bolt"></i> Techno</p>
                 <ul class="calendario">
-                    <li>24:00 | <span>--</span></li>
-                    <li>22:00 | <span>--</span></li>
-                    <li>20:00 | <span>---</span></li>
-                    <li>19:00 | <span>--</span></li>
-                    <li>18:00 | <span>--</span></li>
-                    <li>17:00 | <span>--</span></li>
+                    <li>24:00 | <span>DJ Astral</span></li>
+                    <li>22:00 | <span>Techno Master</span></li>
+                    <li>20:00 | <span>Bass Hunter</span></li>
+                    <li>19:00 | <span>Groove Master</span></li>
+                    <li>18:00 | <span>Deep Vibes</span></li>
+                    <li>17:00 | <span>Opening DJ</span></li>
                 </ul>
             </div>
 
             <div class="escenario bg-verde">
-                <p class="nombre-escenario">EDM</p>
+                <p class="nombre-escenario"><i class="fas fa-music"></i> EDM</p>
                 <ul class="calendario">
-                    <li>24:00 | <span>--</span></li>
-                    <li>22:00 | <span>--</span></li>
-                    <li>20:00 | <span>--</span></li>
-                    <li>19:00 | <span>--</span></li>
-                    <li>18:00 | <span>--</span></li>
-                    <li>17:00 | <span>--</span></li>
+                    <li>24:00 | <span>EDM King</span></li>
+                    <li>22:00 | <span>Drop Master</span></li>
+                    <li>20:00 | <span>Bass Drop</span></li>
+                    <li>19:00 | <span>Energy DJ</span></li>
+                    <li>18:00 | <span>Vibe Master</span></li>
+                    <li>17:00 | <span>Warm Up</span></li>
                 </ul>
             </div>
         </div>
@@ -80,73 +130,109 @@
         <p class="dia">Sábado 12</p>
         <div class="escenarios-contenedor contenedor">
             <div class="escenario bg-verde">
-                <p class="nombre-escenario">Techno</p>
+                <p class="nombre-escenario"><i class="fas fa-bolt"></i> Techno</p>
                 <ul class="calendario">
-                    <li>24:00 | <span>--</span></li>
-                    <li>22:00 | <span>--</span></li>
-                    <li>20:00 | <span>--</span></li>
-                    <li>19:00 | <span>--</span></li>
-                    <li>18:00 | <span>--</span></li>
-                    <li>17:00 | <span>--</span></li>
+                    <li>24:00 | <span>Techno Legend</span></li>
+                    <li>22:00 | <span>Bass Master</span></li>
+                    <li>20:00 | <span>Groove King</span></li>
+                    <li>19:00 | <span>Deep Master</span></li>
+                    <li>18:00 | <span>Vibe Hunter</span></li>
+                    <li>17:00 | <span>Opening Set</span></li>
                 </ul>
             </div>
 
             <div class="escenario bg-amarillo">
-                <p class="nombre-escenario">EDM</p>
+                <p class="nombre-escenario"><i class="fas fa-music"></i> EDM</p>
                 <ul class="calendario">
-                    <li>24:00 | <span>--</span></li>
-                    <li>22:00 | <span>--</span></li>
-                    <li>20:00 | <span>--</span></li>
-                    <li>19:00 | <span>--</span></li>
-                    <li>18:00 | <span>--</span></li>
-                    <li>17:00 | <span>--</span></li>
+                    <li>24:00 | <span>EDM Master</span></li>
+                    <li>22:00 | <span>Drop King</span></li>
+                    <li>20:00 | <span>Bass Master</span></li>
+                    <li>19:00 | <span>Energy King</span></li>
+                    <li>18:00 | <span>Vibe Master</span></li>
+                    <li>17:00 | <span>Warm Up</span></li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="galeria" class="galeria">
-        <h3>busca tu foto terminando el evento !  </h3>
+        <h3><i class="fas fa-camera"></i> ¡Busca tu foto terminando el evento!</h3>
+        <p class="galeria-descripcion">Captura los mejores momentos y descarga tus fotos favoritas</p>
         <div class="galeria-imagenes"></div>
     </section>
 
     <section id="boletos" class="contenedor-boletos">
-        <h3>Boletos</h3>
+        <h3><i class="fas fa-ticket-alt"></i> Boletos</h3>
 
         <div class="boletos">
             <div class="pase">
-                <p class="pase-nombre">Entrada Normal</p>
+                <p class="pase-nombre"><i class="fas fa-user"></i> Entrada Normal</p>
                 <header class="pase-header"><p>Incluye</p></header>
                 <div class="pase-body">
                     <ul>
-                        <li>Acceso al evento</li>
-                        <li>Bebida limitada</li>
-                        <li>Camisa / Pulsera del Evento</li>
+                        <li><i class="fas fa-check"></i> Acceso al evento</li>
+                        <li><i class="fas fa-check"></i> Bebida limitada</li>
+                        <li><i class="fas fa-check"></i> Camisa / Pulsera del Evento</li>
+                        <li><i class="fas fa-check"></i> Acceso a galería de fotos</li>
                     </ul>
                 </div>
-                <footer class="pase-footer"><p>$100</p></footer>
+                <footer class="pase-footer">
+                    <p><i class="fas fa-dollar-sign"></i> $100</p>
+                    <button class="btn-comprar">Comprar Ahora</button>
+                </footer>
             </div>
 
-            <div class="pase">
-                <p class="pase-nombre">Entrada VIP</p>
+            <div class="pase pase-vip">
+                <p class="pase-nombre"><i class="fas fa-crown"></i> Entrada VIP</p>
                 <header class="pase-header"><p>Incluye</p></header>
                 <div class="pase-body">
                     <ul>
-                        <li>Acceso al evento</li>
-                        <li>Bebida Ilimitada</li>
-                        <li>Camisa / Pulsera del Evento</li>
-                        <li>Acceso VIP</li>
+                        <li><i class="fas fa-check"></i> Acceso al evento</li>
+                        <li><i class="fas fa-check"></i> Bebida Ilimitada</li>
+                        <li><i class="fas fa-check"></i> Camisa / Pulsera del Evento</li>
+                        <li><i class="fas fa-check"></i> Acceso VIP</li>
+                        <li><i class="fas fa-check"></i> Área exclusiva</li>
+                        <li><i class="fas fa-check"></i> Meet & Greet con DJs</li>
                     </ul>
                 </div>
-                <footer class="pase-footer"><p>$180</p></footer>
+                <footer class="pase-footer">
+                    <p><i class="fas fa-dollar-sign"></i> $180</p>
+                    <button class="btn-comprar btn-vip">Comprar Ahora</button>
+                </footer>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p>Diseñador freelancer: jayyd.zip</p>
-        <p>Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4><i class="fas fa-star"></i> Astral Vision</h4>
+                <p>Creando experiencias únicas desde 2020</p>
+            </div>
+            <div class="footer-section">
+                <h4><i class="fas fa-map-marker-alt"></i> Ubicación</h4>
+                <p>Jerez, Zacatecas, México</p>
+            </div>
+            <div class="footer-section">
+                <h4><i class="fas fa-phone"></i> Contacto</h4>
+                <p>info@astralvision.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Diseñador freelancer: jayyd.zip</p>
+            <p>Todos los derechos reservados. &copy; 2024</p>
+        </div>
     </footer>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="build/js/app.js"></script>
 </body>
