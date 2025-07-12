@@ -38,3 +38,18 @@
     padding: 0;
     list-style: none;
 }
+.ubicacion-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.ubicacion-icono {
+  font-size: 40px;
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.ubicacion-icono:hover {
+  transform: scale(1.2);
+}

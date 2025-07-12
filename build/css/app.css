@@ -763,3 +763,38 @@ body > section {
   color: #FFFFFF;
   text-align: center;
 }/*# sourceMappingURL=app.css.map */
+.ubicacion-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.ubicacion-icono {
+  font-size: 50px;
+  color: white;
+  background-color: red;
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: pulso 1.5s infinite;
+}
+
+.ubicacion-icono:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+}
+
+@keyframes pulso {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  }
+}
