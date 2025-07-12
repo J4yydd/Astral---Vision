@@ -483,7 +483,7 @@ body > section {
 }
 
 .contenido-festival {
-  margin-top: 3rem;
+  margin-top: rem;
 }
 .contenido-festival h2 {
   margin-bottom: 1rem;
@@ -495,7 +495,7 @@ body > section {
 
 .lineup {
   background-color: #F53756;
-    margin-top: -10rem;
+    margin-top: -5rem;
 
   
 }
@@ -794,4 +794,23 @@ body > section {
     transform: scale(1);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
   }
+}
+.instagram-container {
+  text-align: center;
+  margin-top: 6px;
+}
+
+.instagram-icono {
+  font-size: 40px;
+  color: #ffffff;
+  background-color: #cf1190;
+  padding: 16px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instagram-icono:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
