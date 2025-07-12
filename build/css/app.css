@@ -471,7 +471,8 @@ body > section {
 .sobre-festival {
   width: 95%;
   max-width: 120rem;
-  margin: 0 auto;
+  margin:  auto;
+  padding-top: 10%;
 }
 @media (min-width: 768px) {
   .sobre-festival {
@@ -482,10 +483,10 @@ body > section {
 }
 
 .contenido-festival {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 .contenido-festival h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .contenido-festival .fecha {
   color: #4CB8B3;
@@ -494,6 +495,9 @@ body > section {
 
 .lineup {
   background-color: #F53756;
+    margin-top: -10rem;
+
+  
 }
 .lineup h3,
 .lineup .dia {
@@ -758,7 +762,9 @@ body > section {
   text-align: center;
   margin-top: 50px;
 }
-
+.galeria-descripcion{
+  text-align: center;
+}
 .ubicacion-icono {
   font-size: 50px;
   color: white;
