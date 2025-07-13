@@ -473,7 +473,7 @@ body > section {
   max-width: 120rem;
   margin:  auto;
   padding-top: 10%;
-  padding: ;
+  padding: 
 
 }
 @media (min-width: 768px) {
@@ -564,7 +564,8 @@ body > section {
 .galeria {
   width: 95%;
   max-width: 120rem;
-  margin: 0 auto;
+  margin: auto;
+  padding: 30px;
 }
 .galeria-imagenes {
   display: grid;
