@@ -473,6 +473,8 @@ body > section {
   max-width: 120rem;
   margin:  auto;
   padding-top: 10%;
+  padding: ;
+
 }
 @media (min-width: 768px) {
   .sobre-festival {
@@ -483,7 +485,7 @@ body > section {
 }
 
 .contenido-festival {
-  margin-top: rem;
+  margin-top: 1rem;
 }
 .contenido-festival h2 {
   margin-bottom: 1rem;
